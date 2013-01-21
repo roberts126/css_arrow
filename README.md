@@ -1,4 +1,1 @@
-css_arrow
-=========
-
-SASS Mixin For CSS Arrows
+SASS Mixin For CSS Arrows based on cssarrowplease.com.

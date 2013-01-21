@@ -1,0 +1,72 @@
+@mixin arrow($dir: up, $backgroundColor: #88b7d5, $borderColor: #c2e1f5, $arrowSize: 30px, $borderSize: 4px) {
+    $arrowDim: getArrowDims($arrowSize, $borderSize);
+
+    position: relative;
+    background: $backgroundColor;
+    border: $borderSize solid $borderColor;
+    &:after, &:before {
+        @if($dir == up or $dir == top) {
+            bottom: 100%;
+        } @else if($dir == right) {
+            left: 100%;
+        } @else if($dir == down or $dir == bottom) {
+            top: 100%;
+        } @else if($dir == left) {
+            right: 100%;
+        }
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    &:after {
+        border-color: transparent;
+        border-width: $arrowSize;
+        @if($dir == up or $dir == top) {
+            border-bottom-color: $backgroundColor;
+            left: 50%;
+            margin-left: $arrowSize * -1;
+        } @else if($dir == right) {
+            border-left-color: $backgroundColor;
+            top: 50%;
+            margin-top: $arrowSize * -1;
+        } @else if($dir == down or $dir == bottom) {
+            border-top-color: $backgroundColor;
+            left: 50%;
+            margin-left: $arrowSize * -1;
+        } @else if($dir == left) {
+            border-right-color: $backgroundColor;
+            top: 50%;
+            margin-top: $arrowSize * -1;
+        }
+    }
+    &:before {
+        border-color: transparent;
+        border-width: $arrowDim;
+        @if($dir == up or $dir == top) {
+            border-bottom-color: $borderColor;
+            left: 50%;
+            margin-left: $arrowDim * -1;
+        } @else if($dir == right) {
+            border-left-color: $borderColor;
+            top: 50%;
+            margin-top: $arrowDim * -1;
+        } @else if($dir == down or $dir == bottom) {
+            border-top-color: $borderColor;
+            left: 50%;
+            margin-left: $arrowDim * -1;
+        } @else if($dir == left) {
+            border-right-color: $borderColor;
+            top: 50%;
+            margin-top: $arrowDim * -1;
+        }
+    }
+}
+
+@function getArrowDims($arrowSize, $borderSize) {
+    $borderSize: round($borderSize * 1.41421356);
+    $arrowDim: $arrowSize + $borderSize;
+    @return $arrowDim;
+}
