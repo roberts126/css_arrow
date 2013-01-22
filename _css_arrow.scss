@@ -1,4 +1,10 @@
-@mixin arrow($dir: up, $backgroundColor: #88b7d5, $borderColor: #c2e1f5, $arrowSize: 30px, $borderSize: 4px) {
+$dArrowDirection: up !default;
+$dArrowBorderColor: #c2e1f5 !default;
+$dArrowBackground: #88b7d5 !default;
+$dArrowSize: 30px !default;
+$dArrowBorderSize: 4px !default;
+
+@mixin arrow($dir: $dArrowDirection, $backgroundColor: $dArrowBackground, $borderColor: $dArrowBorderColor, $arrowSize: $dArrowSize, $borderSize: $dArrowBorderSize) {
     $arrowDim: getArrowDims($arrowSize, $borderSize);
 
     position: relative;
